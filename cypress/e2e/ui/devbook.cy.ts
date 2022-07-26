@@ -1,16 +1,15 @@
-// import cy from "cypress";
 describe("Devbook application", () => {
-  it("Visits the DevBook", () => {
-    //? Acessar uma rota
-    cy.visit("http://localhost:3000/");
+  beforeEach(() => {
+    const baseUrl = "http://localhost:3000/";
+    cy.visit(baseUrl);
+  });
 
+  it("Visits the DevBook page", () => {
     //? Pega o valor de um componente
     cy.get('h2[data-test="heading"]').contains("DevBook!");
   });
 
   it("Show's a book list", () => {
-    cy.visit("http://localhost:3000/");
-
     //? Verificar se existe algo renderizado
     cy.get('div[data-test="book-list"]').should("exist");
 
@@ -20,7 +19,7 @@ describe("Devbook application", () => {
 
       //? Pega os títulos dos livros
       const titles = [...books].map(
-        (book) => book.querySelector("h2.titles").innerHTML
+        (book) => book.querySelector("h5.titles").innerHTML
       );
 
       //? Espera que os títulos sejam iguais aos valores passados
