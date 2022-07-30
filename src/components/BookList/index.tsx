@@ -2,6 +2,8 @@ import { Typography } from "@material-ui/core";
 
 type Props = {
   books: { name: string }[];
+  loading: boolean;
+  error: boolean;
 };
 
 const BookList = ({ books }: Props) => {
